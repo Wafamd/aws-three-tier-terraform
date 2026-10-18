@@ -1,0 +1,28 @@
+project     = "threetier"
+environment = "dev"
+region      = "ap-south-1"
+
+vpc_cidr           = "10.0.0.0/16"
+az_count           = 2
+single_nat_gateway = true
+
+# Restrict this to your own IP while testing: ["203.0.113.4/32"]
+ingress_cidrs = ["0.0.0.0/0"]
+
+instance_type        = "t3.micro"
+asg_min_size         = 2
+asg_max_size         = 4
+asg_desired_capacity = 2
+
+db_engine            = "mysql"
+db_engine_version    = "8.0"
+db_instance_class    = "db.t3.micro"
+db_allocated_storage = 20
+db_name              = "appdb"
+db_username          = "appadmin"
+db_multi_az          = false
+
+deletion_protection = false
+
+# Set to an ACM cert ARN in this region to enable HTTPS + HTTP->HTTPS redirect.
+certificate_arn = ""
